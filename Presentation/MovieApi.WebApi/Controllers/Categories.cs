@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MovieApi.Application.Features.CQRSDesignPattern.Commands.CategoryCommands;
 using MovieApi.Application.Features.CQRSDesignPattern.Handlers.CategoryHandlers;
+using MovieApi.Application.Features.CQRSDesignPattern.Queries.CategoryQueries;
+using MovieApi.Domain.Entities;
 
 namespace MovieApi.WebApi.Controllers
 {
@@ -30,12 +32,31 @@ namespace MovieApi.WebApi.Controllers
             var result = await _getCategoriesQueryHandler.Handle();
             return Ok(result);
         }
-        [HttpPost]
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await _getCategoryByIdQueryHandler.Handle(new GetCategoryByIdQuery(id));
+            return Ok(result);
+
+        }
+        [HttpPost("[action]")]
         public async Task<IActionResult> Create(CreateCategoryCommand command)
         {
              await _createCategoryCommandHandler.Handle(command);
              return Ok("Kayıt Başarılı ! ");
             //return Ok(await _createCategoryCommandHandler.Handle(command));
+        }
+        [HttpPost("[action]")]
+        public async Task <IActionResult> Remove(int id)
+        {
+            await _removeCategoryCommandHandler.Handle(new RemoveCategoryCommand(id));
+            return Ok("Kayıt Silindi ! ");
+        }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Update(UpdateCategoryCommand command)
+        {
+            await _updateCategoryCommandHandler.Handle(command);
+            return Ok("Kayıt Güncellendi ! ");
         }
     }
 }
