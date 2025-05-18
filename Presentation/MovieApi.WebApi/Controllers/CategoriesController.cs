@@ -9,7 +9,7 @@ namespace MovieApi.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Categories : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly CreateCategoryCommandHandler _createCategoryCommandHandler;
         private readonly RemoveCategoryCommandHandler _removeCategoryCommandHandler;
@@ -17,7 +17,7 @@ namespace MovieApi.WebApi.Controllers
         private readonly GetCategoryQueryHandler _getCategoriesQueryHandler;
         private readonly GetCategoryByIdQueryHandler _getCategoryByIdQueryHandler;
 
-        public Categories(GetCategoryByIdQueryHandler getCategoryByIdQueryHandler, GetCategoryQueryHandler getCategoriesQueryHandler, UpdateCategoryCommandHandler updateCategoryCommandHandler, RemoveCategoryCommandHandler removeCategoryCommandHandler, CreateCategoryCommandHandler createCategoryCommandHandler)
+        public CategoriesController(GetCategoryByIdQueryHandler getCategoryByIdQueryHandler, GetCategoryQueryHandler getCategoriesQueryHandler, UpdateCategoryCommandHandler updateCategoryCommandHandler, RemoveCategoryCommandHandler removeCategoryCommandHandler, CreateCategoryCommandHandler createCategoryCommandHandler)
         {
             _getCategoryByIdQueryHandler = getCategoryByIdQueryHandler;
             _getCategoriesQueryHandler = getCategoriesQueryHandler;
