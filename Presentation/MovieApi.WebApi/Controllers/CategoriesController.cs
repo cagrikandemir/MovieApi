@@ -26,7 +26,7 @@ namespace MovieApi.WebApi.Controllers
             _createCategoryCommandHandler = createCategoryCommandHandler;
         }
 
-        [HttpGet]
+        [HttpGet("[action]")]
         public async Task<IActionResult> GetAll()
         {
             var result = await _getCategoriesQueryHandler.Handle();
@@ -46,13 +46,13 @@ namespace MovieApi.WebApi.Controllers
              return Ok("Kayıt Başarılı ! ");
             //return Ok(await _createCategoryCommandHandler.Handle(command));
         }
-        [HttpPost("[action]")]
+        [HttpDelete("[action]")]
         public async Task <IActionResult> Remove(int id)
         {
             await _removeCategoryCommandHandler.Handle(new RemoveCategoryCommand(id));
             return Ok("Kayıt Silindi ! ");
         }
-        [HttpPost("[action]")]
+        [HttpPut("[action]")]
         public async Task<IActionResult> Update(UpdateCategoryCommand command)
         {
             await _updateCategoryCommandHandler.Handle(command);

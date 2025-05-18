@@ -44,14 +44,14 @@ namespace MovieApi.WebApi.Controllers
             await _createMovieCommandHandler.handle(command);
             return Ok("Film Başarıyla Eklendi ! ");
         }
-        [HttpPost("[action]")]
+        [HttpDelete("[action]")]
         public async Task<IActionResult> Remove(int id)
         {
             await _removeMovieCommandHandler.Handle(new RemoveMovieCommand(id));
             return Ok("Film Başarıyla Silindi ! ");
 
         }
-        [HttpPost("[action]")]
+        [HttpPut("[action]")]
         public async Task<IActionResult> Update(UpdateMovieCommand command)
         {
             await _updateMovieCommandHandler.handle(command);
