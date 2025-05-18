@@ -33,8 +33,8 @@ namespace MovieApi.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateCategoryCommand command)
         {
-            var result = await _createCategoryCommandHandler.Handle(command);
-            return Ok("Kayıt Başarılı ! ");
+             await _createCategoryCommandHandler.Handle(command);
+             return Ok("Kayıt Başarılı ! ");
             //return Ok(await _createCategoryCommandHandler.Handle(command));
         }
     }
