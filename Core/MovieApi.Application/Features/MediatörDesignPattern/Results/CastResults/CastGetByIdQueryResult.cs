@@ -1,6 +1,6 @@
-﻿namespace MovieApi.Domain.Entities;
+﻿namespace MovieApi.Application.Features.MediatörDesignPattern.Results.CastResults;
 
-public class Cast
+public class CastGetByIdQueryResult
 {
     public int CastId { get; set; }
     public string? Title { get; set; }
